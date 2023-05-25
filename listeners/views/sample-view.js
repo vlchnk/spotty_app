@@ -1,4 +1,5 @@
-const sampleViewCallback = async ({ ack, view, body, client }) => {
+const sampleViewCallback = async ({ req, logger }) => {
+  const { ack, view, body, client } = req;
   await ack();
 
   try {
@@ -11,7 +12,7 @@ const sampleViewCallback = async ({ ack, view, body, client }) => {
       text: `<@${body.user.id}> submitted the following :sparkles: hopes and dreams :sparkles:: \n\n ${sampleInputValue}`,
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 

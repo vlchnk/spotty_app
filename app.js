@@ -3,7 +3,9 @@ const { config } = require('dotenv');
 const Knex = require('knex');
 const Spotify = require('spotify-api.js');
 const winston = require('winston');
+const { CronJob } = require('cron');
 const { registerListeners } = require('./listeners');
+const { registerCron } = require('./cron');
 
 config();
 
@@ -38,7 +40,10 @@ const app = new App({
   logLevel: LogLevel.DEBUG,
 });
 
-registerListeners({ app, knex, spotify, logger });
+const registry = { app, knex, spotify, logger, CronJob };
+
+registerListeners(registry);
+registerCron(registry);
 
 (async () => {
   try {
