@@ -4,10 +4,9 @@
   "description": "App for Slack",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js",
+    "start": "docker-compose -f docker-compose.yml up -d",
     "lint": "eslint --ext .js ."
   },
-  "author": "Slack Technologies, LLC",
   "license": "MIT",
   "keywords": [],
   "dependencies": {
