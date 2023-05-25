@@ -1,4 +1,4 @@
-const appHomeOpenedCallback = async ({ knex, spotify, logger, req }) => {
+const appHomeOpenedCallback = async ({ logger, req }) => {
   const { client, event } = req;
   // Ignore the `app_home_opened` event for anything but the Home tab
   if (event.tab !== 'home') return;

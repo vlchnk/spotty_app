@@ -1,4 +1,4 @@
-const job = async ({ logger, spotify, knex }) => {
+const job = async () => {
 
 };
 
