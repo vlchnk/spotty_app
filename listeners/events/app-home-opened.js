@@ -1,4 +1,5 @@
-const appHomeOpenedCallback = async (knex, spotify, { client, event }) => {
+const appHomeOpenedCallback = async ({ knex, spotify, logger, context }) => {
+  const { client, event } = context;
   // Ignore the `app_home_opened` event for anything but the Home tab
   if (event.tab !== 'home') return;
 
@@ -26,7 +27,7 @@ const appHomeOpenedCallback = async (knex, spotify, { client, event }) => {
       },
     });
   } catch (error) {
-    console.error(error);
+    logger.error(error);
   }
 };
 

@@ -15,7 +15,8 @@
     "dotenv": "~16.0.3",
     "knex": "^2.4.2",
     "pg": "^8.11.0",
-    "spotify-api.js": "^9.2.5"
+    "spotify-api.js": "^9.2.5",
+    "winston": "^3.8.2"
   },
   "devDependencies": {
     "eslint": "~8.24.0",

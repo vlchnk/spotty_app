@@ -2,11 +2,22 @@ const { App, LogLevel } = require('@slack/bolt');
 const { config } = require('dotenv');
 const Knex = require('knex');
 const Spotify = require('spotify-api.js');
+const winston = require('winston');
 const { registerListeners } = require('./listeners');
 
-const spotify = new Spotify.Client({ token: process.env.SPOTIFY_TOKEN });
-
 config();
+
+const logger = winston.createLogger({
+  level: 'info',
+  format: winston.format.json(),
+  defaultMeta: { service: 'spotty' },
+  transports: [
+    new winston.transports.File({ filename: 'error.log', level: 'error' }),
+    new winston.transports.File({ filename: 'combined.log' }),
+  ],
+});
+
+const spotify = new Spotify.Client({ token: process.env.SPOTIFY_TOKEN });
 
 const knex = Knex({
   client: 'pg',
@@ -27,13 +38,13 @@ const app = new App({
   logLevel: LogLevel.DEBUG,
 });
 
-registerListeners(app, knex, spotify);
+registerListeners({ app, knex, spotify, logger });
 
 (async () => {
   try {
     await app.start(process.env.PORT || 3000);
-    console.log('⚡️ Spotty app is running! ⚡️');
+    logger.info('⚡️ Spotty app is running! ⚡️');
   } catch (error) {
-    console.error('Unable to start App', error);
+    logger.error('Unable to start App', error);
   }
 })();

@@ -1,5 +1,5 @@
 const { appHomeOpenedCallback } = require('./app-home-opened');
 
-module.exports.register = (app, knex, spotify) => {
-  app.event('app_home_opened', appHomeOpenedCallback.bind(this, knex, spotify));
+module.exports.register = (registry) => {
+  registry.app.event('app_home_opened', (context) => appHomeOpenedCallback({ ...registry, context }));
 };
