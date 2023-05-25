@@ -1,8 +1,7 @@
-# Bolt for JavaScript Template App
+# Spotty App
 
-This is a generic Bolt for JavaScript template app used to build out Slack apps.
+[Block kit builder for Slack App](https://app.slack.com/block-kit-builder/)
 
-Before getting started, make sure you have a development workspace where you have permissions to install apps. If you don’t have one setup, go ahead and [create one](https://slack.com/create).
 ## Installation
 
 #### Create a Slack App
@@ -15,22 +14,24 @@ Before getting started, make sure you have a development workspace where you hav
 #### Environment Variables
 Before you can run the app, you'll need to store some environment variables.
 
-1. Rename `.env.sample` to `.env`
-2. Open your apps configuration page from [this list](https://api.slack.com/apps), click *OAuth & Permissions* in the left hand menu, then copy the *Bot User OAuth Token* into your `.env` file under `SLACK_BOT_TOKEN`
-3. Click *Basic Information* from the left hand menu and follow the steps in the *App-Level Tokens* section to create an app-level token with the `connections:write` scope. Copy that token into your `.env` as `SLACK_APP_TOKEN`.
+1. Open your apps configuration page from [this list](https://api.slack.com/apps), click *OAuth & Permissions* in the left hand menu, then copy the *Bot User OAuth Token* into your `.env` file under `SLACK_BOT_TOKEN`
+2. Click *Basic Information* from the left hand menu and follow the steps in the *App-Level Tokens* section to create an app-level token with the `connections:write` scope. Copy that token into your `.env` as `SLACK_APP_TOKEN`.
 
 ### Setup Your Local Project
 ```zsh
-# Clone this project onto your machine
-git clone https://github.com/slack-samples/bolt-js-starter-template.git
+# Clone this project into your machine
+git clone https://github.com/vlchnk/spotty_app.git
 
 # Change into this project directory
-cd bolt-js-starter-template
+cd spotty_app
 
 # Install dependencies
 npm install
 
-# Run Bolt server
+# Add .env file with your secrets
+cp .env.sample .env
+
+# Run app
 npm start
 ```
 
