@@ -1,6 +1,13 @@
 # Spotty App
 
-[Block kit builder for Slack App](https://app.slack.com/block-kit-builder/)
+## TO-DO:
+
+- [x] Init acrhiticture
+- [ ] Add env
+- [ ] Add migrations
+- [ ] Add listener events
+- [ ] Add crons
+- [ ] Add UI for Slack - [Block kit builder for Slack App](https://app.slack.com/block-kit-builder/)
 
 ## Installation
 
